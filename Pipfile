@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+torch = "*"
+pandas = "*"
+numpy = "*"
+ale-py = "*"
+gymnasium = {extras = ["accept-rom-license", "atari", "other"], version = "*"}
+
+[dev-packages]
+
+[requires]
+python_version = "3.14"
