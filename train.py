@@ -12,9 +12,7 @@ import math
 import pandas as pd
 from pathlib import Path
 
-SCRIPTS_DIR = Path(__file__).resolve().parent
-ROOT = SCRIPTS_DIR.parent
-MODEL_SAVE_DIR = ROOT / "models"
+ROOT = Path(__file__).resolve().parent
 
 gym.register_envs(ale_py)
 
@@ -268,11 +266,11 @@ if __name__ == "__main__":
     print("Training complete. Saving results...")
 
     # save the trained model
-    torch.save(agent.online_net.state_dict(), MODEL_SAVE_DIR / "dqn_base_model.pth")
+    torch.save(agent.online_net.state_dict(), ROOT / "dqn_model.pth")
 
     # save training performance data
     df = pd.DataFrame(performance_data)
-    df.to_csv(MODEL_SAVE_DIR / "training_performance_base.csv", index=False)
+    df.to_csv(ROOT / "training_performance.csv", index=False)
 
     env.close()
-    print(f"Model saved to '{MODEL_SAVE_DIR / "dqn_base_model.pth"}' and performance saved to '{MODEL_SAVE_DIR / "training_performance_base.csv"}'.")
+    print(f"Model saved to '{ROOT / "dqn_model.pth"}' and performance saved to '{ROOT / "training_performance.csv"}'.")

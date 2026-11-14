@@ -48,7 +48,13 @@ def make_env():
 
 def main():
     parser = argparse.ArgumentParser(description="Play one Air Raid episode with a trained DQN.")
-    parser.add_argument("model", type=Path, help="Path to a saved DQN .pth file")
+    parser.add_argument(
+        "model",
+        nargs="?",
+        type=Path,
+        default=Path("dqn_model.pth"),
+        help="Path to a saved DQN .pth file (default: dqn_model.pth)",
+    )
     args = parser.parse_args()
 
     if not args.model.is_file():
