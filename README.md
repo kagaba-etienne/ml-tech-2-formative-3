@@ -91,14 +91,14 @@ Each member's experiments and what changed are written up separately:
 
 ### Install
 
-Python 3.14, matching the version in the [Pipfile](Pipfile), and [pipenv](https://pipenv.pypa.io/). From the project root:
+Python 3.14 and [uv](https://docs.astral.sh/uv/). uv is the package and environment manager for this project. From the project root:
 
 ```bash
-pipenv install
-pipenv run python train.py
+uv sync
+uv run python train.py
 ```
 
-`pipenv install` installs PyTorch, pandas, NumPy, ALE, and Gymnasium with the Atari extras. The `accept-rom-license` extra downloads the Atari ROMs during install.
+`uv sync` creates `.venv` and installs PyTorch, pandas, NumPy, ALE, and Gymnasium with the Atari extras. The Air Raid ROM ships inside the `ale-py` package.
 
 ## Gameplay Demonstration
 
@@ -107,13 +107,13 @@ pipenv run python train.py
 The `dqn_model.pth` in this repository is Kagaba Etienne's 11th experiment, [models/Kagaba_Etienne/experiment_11_mse_fast_clipped_batch64/dqn_model.pth](models/Kagaba_Etienne/experiment_11_mse_fast_clipped_batch64/dqn_model.pth). That run uses MSE loss, clipped rewards, a gradient step every 4 environment steps, observation scaling on the GPU, and batch size 64.
 
 ```bash
-pipenv run python play.py
+uv run python play.py
 ```
 
 Pass a checkpoint path to play a different saved model:
 
 ```bash
-pipenv run python play.py models/Kagaba_Etienne/experiment_11_mse_fast_clipped_batch64/dqn_model.pth
+uv run python play.py models/Kagaba_Etienne/experiment_11_mse_fast_clipped_batch64/dqn_model.pth
 ```
 
 Recordings of this agent playing Air Raid are at [videos/](videos/).

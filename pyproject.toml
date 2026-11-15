@@ -1,0 +1,16 @@
+[project]
+name = "air-raid-dqn"
+version = "0.1.0"
+description = "Deep Q-Network agent for the Atari Air Raid environment"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "ale-py",
+    "gymnasium[atari,other]",
+    "numpy",
+    "pandas",
+    "torch",
+]
+
+[tool.uv]
+package = false
